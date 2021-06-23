@@ -40,7 +40,6 @@ public class DeptController {
         return deptService.queryAll();
     }
 
-
     /**
      * 获取一些注册进来的微服务的信息~，
      *

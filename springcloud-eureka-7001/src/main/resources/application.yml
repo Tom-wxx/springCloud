@@ -1,6 +1,7 @@
 server:
   port: 7001
 
+
 #Eureka
 eureka:
   instance:
