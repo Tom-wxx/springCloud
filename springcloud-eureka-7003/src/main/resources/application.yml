@@ -1,0 +1,15 @@
+server:
+  port: 7003
+
+#Eureka
+eureka:
+  instance:
+    hostname: eureka7003.com   #Eureka服务的实例名称
+  client:
+    register-with-eureka: false  #表示是否向eureka注册中心注册自己(这个模块本身是服务器,所以不需要)
+    fetch-registry: false    #表示如果为false，则自己注册中心,客户端的化为 ture
+    service-url:  #监控页面
+      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7001.com:7001/eureka/
+  server:
+    enable-self-preservation: false  #在开发测试阶段，我们可以把自我保护模式关闭  【不推荐关闭自我保护机制】

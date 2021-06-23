@@ -12,6 +12,8 @@ import java.util.List;
 
 @RestController
 public class DeptConsumerController {
+    /*访问：http://localhost/consumer/dept/list
+    * */
     //理解：消费者，不应该有service层
     //RestTemplate .....供我們直接調用就可以了！ 註冊到spring中
     //(url,实体：Map,Class<T> ressponseType)
@@ -22,11 +24,13 @@ public class DeptConsumerController {
 
     @RequestMapping("/consumer/dept/add")
     public Boolean add(Dept dept){
+        // postForObject(服务提供方地址(接口),参数实体,返回类型.class)
         return restTemplate.postForObject(REST_URL_PREFIX+"/dept/add",dept,Boolean.class);
     }
 
     @RequestMapping("/consumer/dept/get/{id}")
     public Dept get(@PathVariable("id")Long id){
+        // getForObject(服务提供方地址(接口),返回类型.class)
         return restTemplate.getForObject(REST_URL_PREFIX+"/dept/get/"+id,Dept.class);
     }
 
