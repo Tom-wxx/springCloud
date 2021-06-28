@@ -12,7 +12,7 @@
     </select>
 
     <select id="queryAll" resultType="Dept" >
-        select * from dept;
+        select  * from dept;
     </select>
 
 
