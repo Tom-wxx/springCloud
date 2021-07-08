@@ -1,1 +1,10 @@
+服务注册与发现——Netflix Eureka
+负载均衡：
+
+客户端负载均衡——Netflix Ribbon
+服务端负载均衡：——Feign(其也是依赖于Ribbon，只是将调用方式RestTemplete 更改成Service 接口)
+断路器——Netflix Hystrix
+服务网关——Netflix Zuul
+分布式配置——Spring Cloud Config
+
 【封装的整体entity/接口/公共配置等】

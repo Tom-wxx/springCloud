@@ -1,1 +1,26 @@
 搭建服务器集群
+
+Netflix在涉及Eureka时，遵循的就是API原则.
+Eureka是Netflix的有个子模块，也是核心模块之一。Eureka是基于REST的服务，用于定位服务，以实现云端中间件层服务发现和故障转移，服务注册与发现对于微服务来说是非常重要的，
+有了服务注册与发现，只需要使用服务的标识符，就可以访问到服务，而不需要修改服务调用的配置文件了，功能类似于Dubbo的注册中心，比如Zookeeper.
+
+Eureka 包含两个组件：Eureka Server 和 Eureka Client.
+Eureka Server 提供服务注册，各个节点启动后，回在EurekaServer中进行注册，这样Eureka Server中的服务注册表中将会储存所有课用服务节点的信息，服务节点的信息可以在界面中直观的看到.
+Eureka Client 是一个Java客户端，用于简化EurekaServer的交互，客户端同时也具备一个内置的，使用轮询负载算法的负载均衡器。在应用启动后，将会向EurekaServer发送心跳 (默认周期为30秒) 。
+如果Eureka Server在多个心跳周期内没有接收到某个节点的心跳，EurekaServer将会从服务注册表中把这个服务节点移除掉 (默认周期为90s).
+
+三大角色
+
+Eureka Server：提供服务的注册与发现
+Service Provider：服务生产方，将自身服务注册到Eureka中，从而使服务消费方能狗找到
+Service Consumer：服务消费方，从Eureka中获取注册服务列表，从而找到消费服务
+
+EureKa自我保护机制：好死不如赖活着
+一句话总结就是：某时刻某一个微服务不可用，eureka不会立即清理，依旧会对该微服务的信息进行保存！
+
+
+Eureka：集群环境配置
+
+集群成员相互关联
+配置一些自定义本机名字，找到本机hosts文件并打开
+127.0.0.1   eureka7001.com
